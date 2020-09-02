@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+<!-- 驱动  jar   所在路径
+	已经在pom.xml中指定了mysql的位置，所以不需要此处
+	<classPathEntry
+		location="D:\application program\maven\maven-repository\mysql\mysql-connector-java\5.1.34\mysql-connector-java-5.1.34.jar" />
+		-->
+
+	<context id="DB2Tables" targetRuntime="MyBatis3">
+	<!-- 连接数据库4个参数 -->
+		<jdbcConnection
+			driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql:///book" userId="root" password="1234">
+		</jdbcConnection>
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<!-- 配置   实体类  生成 -->
+		<javaModelGenerator targetPackage="com.jwh.entity"
+			targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		<!--xml  -->
+		<sqlMapGenerator targetPackage="com.jwh.mapper"
+			targetProject="src/main/resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		<!--接口  -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.jwh.mapper" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+		<table tableName="admin"   domainObjectName="Admin" />
+
+			
+		
+
+	</context>
+</generatorConfiguration>

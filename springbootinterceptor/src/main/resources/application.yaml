@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql:///book?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 1234
+    type: com.alibaba.druid.pool.DruidDataSource
+  thymeleaf:
+    mode: HTML5
+    cache: false
+    encoding: UTF-8
+mybatis:
+  mapper-locations: classpath:/com/jwh/mapper/*.mapper
+  type-aliases-package: com.jwh.entity

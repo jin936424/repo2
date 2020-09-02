@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="shortcut icon" href="../resources/favicon.ico" th:href="@{/static/favicon.ico}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<span id="pan" th:text="${#httpSession.getAttribute('msg')}"></span>
+<span id="pan" th:text="${err}"></span>
+<form action="admin/login" method="post">
+    用户名: <input type="text" name="aname"><label id="lab1"></label><br>
+    密&nbsp;&nbsp;码: <input id="inp2" type="password" name="apwd"><label id="lab2"></label><br>
+    <input type="submit">
+</form>
+</body>
+<script type="text/javascript">
+    $("#pan").css({"color":"red"}) ;
+
+    $("input:first").blur(function () {
+        var aname = $(this).val() ;
+        if(aname.length==0){
+            $("#lab1").text("用户名不能为空").css({"color":"red"});
+        }else{
+            $("#lab1").hide() ;
+        }
+    });
+    $("#inp2").blur(function () {
+        var apwd = $(this).val() ;
+        if(apwd.length==0){
+            $("#lab2").text("密码不能为空").css({"color":"red"});
+        }else{
+            $("#lab2").hide() ;
+        }
+    });
+
+</script>
+</html>
